@@ -1,0 +1,11 @@
+/*colores estructuras generales*/
+.futer{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-align: justify;
+    color: #185b9d;
+    text-align: center;
+    bottom:0px;
+    font-size: 14px;
+}
