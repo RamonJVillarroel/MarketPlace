@@ -1,4 +1,3 @@
-
 //Navabar 
 const header = document.getElementById('header');
 header.innerHTML=`<nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -86,35 +85,45 @@ categorias.innerHTML=`
 </span>
 </div>
 `;
+fetch('./json/test.json')
+    .then((respuesta) => respuesta.json())
+    .then((data) => {
+      usuarios(data);
+});
 // Card para los vendedores
 const card = document.getElementById("card")
-card.innerHTML=`
-<h1 class="m-2 text-center"> Vendedores</h1>
-<div class="container-fluid">
-<div class="card mb-3 mt-3 border-success " style="max-width: 100%;">
-<div class="row g-0">
-  <div class="col-md-4">
-    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRjlI2C8DG0h08kawIMmVH3uGc1FL7PdWBVebB18gtRwQ&s" class="img-fluid rounded-start" alt="imagenes de productos por vendedores">
-  </div>
-  <div class="col-md-8">
-    <div class="card-body ">
-      <h5 class="card-title text-center">Card title</h5>
-      <p class="card-text ">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-      <div class="container-fluid d-flex justify-content-center">
-      <a href="#"><img width="30" height="30" src="https://img.icons8.com/ios/50/whatsapp--v1.png" alt="whatsapp--v1"/></a>
-      <a href="#"><img width="30" height="30" src="https://img.icons8.com/ios/50/instagram-new--v1.png" alt="instagram-new--v1"/></a>
-      <a href="#"><img width="30" height="30" src="https://img.icons8.com/ios/50/internet--v1.png" alt="internet--v1"/></a>
+card.innerHTML = "";
+const usuarios = (users) => {
+  card.innerHTML = `<h1 class="m-2 text-center"> Vendedores</h1>`;
+  users.forEach(usuario => {
+    card.innerHTML += `
+      <div class="container-fluid">
+        <div class="card mb-3 mt-3 border-success " style="max-width: 100%;">
+          <div class="row g-0">
+            <div class="col-md-4">
+              <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRjlI2C8DG0h08kawIMmVH3uGc1FL7PdWBVebB18gtRwQ&s" class="img-fluid rounded-start" alt="imagenes de productos por vendedores">
+            </div>
+            <div class="col-md-8">
+              <div class="card-body ">
+                <h5 class="card-title text-center">${usuario.vendedor}</h5>
+                <p class="card-text ">${usuario.comentario}</p>
+                <p class="card-text ">vendo: ${usuario.title}</p>
+                <p class="card-text ">${usuario.precio}</p>
+                <div class="container-fluid d-flex justify-content-center">
+                  <a href="#"><img width="30" height="30" src="https://img.icons8.com/ios/50/whatsapp--v1.png" alt="whatsapp--v1"/></a>
+                  <a href="#"><img width="30" height="30" src="https://img.icons8.com/ios/50/instagram-new--v1.png" alt="instagram-new--v1"/></a>
+                  <a href="#"><img width="30" height="30" src="https://img.icons8.com/ios/50/internet--v1.png" alt="internet--v1"/></a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
-    </div>
-  </div>
-</div>
-</div>
-</div>
-`;
-
+    `;
+  });
+}
 
 const footer = document.getElementById('footer')
 footer.innerHTML= `
 <div><h3 class="text-center">testfooter<h3></div>
-
 `
